@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,11 +54,17 @@ return [
     | used globally for all e-mails that are sent by your application.
     |
     */
-
+    /*
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'df9755f23168aa'),
+        'name' => env('MAIL_FROM_NAME', 'Darling'),
     ],
+    */
+    'from' => [
+        'address' => 'smtp.mailtrap.io',
+        'name' => 'MailTrap',
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +77,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION','tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +90,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','df9755f23168aa'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','2baa71a47aeada'),
 
     /*
     |--------------------------------------------------------------------------

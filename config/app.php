@@ -13,7 +13,15 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'NotasDelCole'),
+
+
+    /*
+    |----------------------------------------------
+    | Titulo general de la aplicación
+    |----------------------------------------------
+    */
+    'title' => env('APP_TITLE','Notas del colegio'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +88,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +101,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,11 +177,11 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        notascole\Providers\AppServiceProvider::class,
+        notascole\Providers\AuthServiceProvider::class,
+        // notascole\Providers\BroadcastServiceProvider::class,
+        notascole\Providers\EventServiceProvider::class,
+        notascole\Providers\RouteServiceProvider::class,
 
     ],
 
