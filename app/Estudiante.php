@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estudiante extends Model
 {
-    public function Curso(){
+    public function curso(){
         return $this->belongsTo(Curso::class);
     }
 }
