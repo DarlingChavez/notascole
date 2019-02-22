@@ -31,6 +31,7 @@ class User extends Authenticatable
     ];
 
 
+
     /**
      * Send the password reset notification.
      *
