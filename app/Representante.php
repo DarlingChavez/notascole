@@ -25,4 +25,9 @@ class Representante extends Model
         'id', 'updatedbyuser',
     ];
 
+    public function representados()
+    {
+        return $this->belongsToMany(Estudiante::class);
+    }
+
 }

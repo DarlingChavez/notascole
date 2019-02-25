@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Inicio</a>
+                        <a href="{{ url('/anhiolectivo') }}">Inicio</a>
                     @else
                         <a href="{{ route('login') }}">Ingresar</a>
 
@@ -78,12 +78,9 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Notas del colegio
-                </div>
-            </div>
+        </div>
+        <div class='card-body'>
+            <p>{{ config('app.title', 'Notas del colegio') }}</p>
         </div>
     </body>
 </html>

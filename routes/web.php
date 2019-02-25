@@ -36,5 +36,13 @@ if ($options['reset'] ?? true) {
 if ($options['verify'] ?? false) {
     Route::emailVerification();
 }
-
+/*
 Route::get('/home', 'HomeController@index')->name('home');
+*/
+
+//* ======================================================================== */
+// Routes personalizados
+//* ======================================================================== */
+
+// calificaciones
+Route::get('anhiolectivo','AnhioLectivoController@index')->name('anhiolectivo');
