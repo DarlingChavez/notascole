@@ -16,7 +16,7 @@ class CreateAsignaturasTable extends Migration
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
-            $table->char('estado');
+            $table->char('estado',1);
         });
     }
 

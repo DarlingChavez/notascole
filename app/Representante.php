@@ -30,4 +30,7 @@ class Representante extends Model
         return $this->belongsToMany(Estudiante::class);
     }
 
+    public function fullname(){
+        return $this->nombres.' '.$this->apellidos;
+    }
 }

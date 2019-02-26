@@ -22,7 +22,7 @@ class CreateProfesorsTable extends Migration
             $table->string('telefono');
             $table->timestamps();
             $table->string('updatedbyuser')->nullable();
-            $table->char('estado');
+            $table->char('estado',1);
         });
     }
 

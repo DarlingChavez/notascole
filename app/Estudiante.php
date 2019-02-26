@@ -16,4 +16,8 @@ class Estudiante extends Model
         return $this->belongsToMany(Representante::class);
     }
 
+    public function fullname(){
+        return $this->nombres.' '.$this->apellidos;
+    }
+
 }

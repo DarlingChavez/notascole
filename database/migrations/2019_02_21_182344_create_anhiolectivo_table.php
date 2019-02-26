@@ -13,7 +13,7 @@ class CreateAnhiolectivoTable extends Migration
      */
     public function up()
     {
-        Schema::create('anhiolectivo', function (Blueprint $table) {
+        Schema::create('anhiolectivos', function (Blueprint $table) {
             $table->smallInteger('inicio');
             $table->smallInteger('fin');
             $table->string('descripcion');

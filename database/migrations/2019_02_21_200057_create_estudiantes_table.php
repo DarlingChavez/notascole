@@ -26,6 +26,7 @@ class CreateEstudiantesTable extends Migration
             $table->string('telefono')->nullable();
             $table->timestamps();
             $table->string('updatedbyuser')->nullable();
+            $table->char('estado',1);
         });
     }
 

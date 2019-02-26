@@ -18,7 +18,7 @@ class CreateEstudianteRepresentanteTable extends Migration
             $table->integer('estudiante_id')->unsigned();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes');
             $table->integer('representante_id')->unsigned();
-            $table->foreign('representante_id')->references('id')->on('representante');
+            $table->foreign('representante_id')->references('id')->on('representantes');
         });
     }
 

@@ -5,9 +5,11 @@ namespace notascole\Http\Controllers;
 use Illuminate\Http\Request;
 use notascole\AnhioLectivo;
 use notascole\Representante;
+use Illuminate\Support\Facades\Auth;
 
-class AnhioLectivoController extends Controller
+class ListadoController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -25,10 +27,10 @@ class AnhioLectivoController extends Controller
      */
     public function index()
     {
-
+        $estudiante = Auth::user();
         $anhiosLectivos = AnhioLectivo::where('enabled','=','*')->get();
-        $count = count($anhiosLectivos);
-        if($count>1)
+        $count_anhios = count($anhiosLectivos);
+        if($count_anhios>1)
         {
             return view('consulta.anhiolectivo',compact('anhiosLectivos'));
         }else
@@ -37,15 +39,21 @@ class AnhioLectivoController extends Controller
             if($tipoentidad === 'E')
             {
                 $estudiante = Auth::user();
+                return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
+                                               ->with('estudiante',$estudiante);
             }else if($tipoentidad === 'R'){
                 $id = Auth::user()->entidad_id;
                 $representante = Representante::find($id);
+                $count_estudiantes = Representante::has('representados')->count();
+                if($count_estudiantes<>1){
+                    return view('consulta.estudiante')->with('estudiantes',$representante->representados)
+                                                      ->with('representante',$representante);
+                }else{
+                    return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
+                                               ->with('estudiante',$estudiante);
+                }
             }
-            return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0]);
         }
-
-
-
-
     }
+
 }

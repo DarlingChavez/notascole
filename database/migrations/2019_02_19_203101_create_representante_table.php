@@ -13,7 +13,7 @@ class CreateRepresentanteTable extends Migration
      */
     public function up()
     {
-        Schema::create('representante', function (Blueprint $table) {
+        Schema::create('representantes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellidos');
@@ -33,6 +33,6 @@ class CreateRepresentanteTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('representante');
+        Schema::dropIfExists('representantes');
     }
 }

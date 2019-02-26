@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Año lectivo {{ $anhiolectivo->descripcion }}</div>
+                <div class="card-header">Notas del estudiante: {{ $estudiante->fullname }} / Año lectivo {{ $anhiolectivo->descripcion }}</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">

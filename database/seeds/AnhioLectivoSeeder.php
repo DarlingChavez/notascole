@@ -12,7 +12,7 @@ class AnhioLectivoSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('anhiolectivo')->insert([
+        DB::table('anhiolectivos')->insert([
             'inicio' => 2019,
             'fin' => 2020,
             'descripcion' => '2019 - 2020',

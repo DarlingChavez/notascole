@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use notascole\Representante;
+use notascole\Estudiante;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,5 +18,44 @@ class UsersTableSeeder extends Seeder
             'email'=>'darling.chavez@hotmail.com',
             'password' => bcrypt('123'),
         ]);
+/*
+        DB::table('representantes')->insert([
+            'nombres'=>'Darling Rubén',
+            'apellidos'=>'Chávez Quinde',
+            'cedula'=>'0926899212',
+            'telefono'=> '042662195',
+            'email'=>'darling.chavez@hotmail.com',
+            'nacimiento'=>'1988-10-30',
+            'updatedbyuser'=>'seed',
+            'tipo_entidad'=>'R',
+            'entidad_id' => 1
+        ]);
+*/
+
+        $representante = Representante::create([
+            'nombres'=>'Darling Rubén',
+            'apellidos'=>'Chávez Quinde',
+            'cedula'=>'0926899212',
+            'telefono'=> '042662195',
+            'email'=>'darling.chavez@hotmail.com',
+            'nacimiento'=>'1988-10-30',
+            'updatedbyuser'=>'seed',
+        ]);
+
+        $estudiante = Estudiante::create([
+            'cedula'=>'1302458975',
+            'nombres'=>'Kelly',
+            'apellidopaterno'=>'Campoverde',
+            'apellidomaterno'=>'Montenegro',
+            'curso_id'=>1,
+            'email'=>'kelly.campoverde@gmail.com',
+            'nacimiento'=>'1990-12-10',
+            'telefono'=>'042662195',
+            'updatedbyuser'=>'seed',
+            'estado'=>'A'
+        ]);
+
+
+        $representante->representados()->attach($estudiante);
     }
 }

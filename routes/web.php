@@ -45,4 +45,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //* ======================================================================== */
 
 // calificaciones
-Route::get('anhiolectivo','AnhioLectivoController@index')->name('anhiolectivo');
+Route::get('listado','ListadoController@index')->name('listado');
+Route::get('notas','ListadoController@notas')->name('notas');
