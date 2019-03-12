@@ -5,6 +5,7 @@ namespace notascole\Http\Controllers;
 use Illuminate\Http\Request;
 use notascole\AnhioLectivo;
 use notascole\Representante;
+use notascole\Estudiante;
 use Illuminate\Support\Facades\Auth;
 
 class ListadoController extends Controller
@@ -27,7 +28,9 @@ class ListadoController extends Controller
      */
     public function index()
     {
-        $estudiante = Auth::user();
+        $idUsuario = Auth::user()->id;
+        $tipoentidad = Auth::user()->tipo_entidad;
+        $idEntidad = Auth::user()->entidad_id;
         $anhiosLectivos = AnhioLectivo::where('enabled','=','*')->get();
         $count_anhios = count($anhiosLectivos);
         if($count_anhios>1)
@@ -35,25 +38,31 @@ class ListadoController extends Controller
             return view('consulta.anhiolectivo',compact('anhiosLectivos'));
         }else
         {
-            $tipoentidad = Auth::user()->tipoentidad;
+            $tipoentidad = Auth::user()->tipo_entidad;
             if($tipoentidad === 'E')
             {
-                $estudiante = Auth::user();
-                return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
-                                               ->with('estudiante',$estudiante);
+                $estudiante = Estudiante::find($idEntidad);
+                return view('consulta.listado')->with('estudiante',$estudiante)
+                                               ->with('anhiolectivo',$anhiosLectivos[0]);
+
             }else if($tipoentidad === 'R'){
-                $id = Auth::user()->entidad_id;
-                $representante = Representante::find($id);
-                $count_estudiantes = Representante::has('representados')->count();
+                $representante = Representante::find($idEntidad);
+                $count_estudiantes = $representante->representadosCount()->first()->contador;
                 if($count_estudiantes<>1){
                     return view('consulta.estudiante')->with('estudiantes',$representante->representados)
-                                                      ->with('representante',$representante);
+                                                      ->with('representante',$count_estudiantes);
                 }else{
+                    $estudiante = $representante->representados()->first();
                     return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
-                                               ->with('estudiante',$estudiante);
+                                               ->with('estudiante',$count_estudiantes);
                 }
+            }else{
+                $estudiante = Estudiante::find($idEntidad);
+                return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
+                                               ->with('estudiante',$estudiante);
             }
         }
     }
+
 
 }

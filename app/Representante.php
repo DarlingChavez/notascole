@@ -33,4 +33,11 @@ class Representante extends Model
     public function fullname(){
         return $this->nombres.' '.$this->apellidos;
     }
+
+    public function representadosCount(){
+        return $this->representados()
+                    ->selectRaw('estudiante_id, count(*) as contador')
+                    ->groupBy('representante_id');
+    }
+
 }

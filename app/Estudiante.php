@@ -6,6 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estudiante extends Model
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'cedula', 'nombres', 'apellidopaterno', 'apellidomaterno', 'nacimiento', 'telefono'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'id', 'curso_id', 'email', 'updatedbyuser', 'estado'
+    ];
+
     public function curso()
     {
         return $this->belongsTo(Curso::class);

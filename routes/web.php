@@ -45,5 +45,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 //* ======================================================================== */
 
 // calificaciones
-Route::get('listado','ListadoController@index')->name('listado');
+Route::get('home','ListadoController@index')->name('home');
 Route::get('notas','ListadoController@notas')->name('notas');

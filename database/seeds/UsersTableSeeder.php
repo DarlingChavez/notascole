@@ -17,20 +17,9 @@ class UsersTableSeeder extends Seeder
             'name'=>'Darling Chávez',
             'email'=>'darling.chavez@hotmail.com',
             'password' => bcrypt('123'),
-        ]);
-/*
-        DB::table('representantes')->insert([
-            'nombres'=>'Darling Rubén',
-            'apellidos'=>'Chávez Quinde',
-            'cedula'=>'0926899212',
-            'telefono'=> '042662195',
-            'email'=>'darling.chavez@hotmail.com',
-            'nacimiento'=>'1988-10-30',
-            'updatedbyuser'=>'seed',
-            'tipo_entidad'=>'R',
+            'tipo_entidad' => 'R',
             'entidad_id' => 1
         ]);
-*/
 
         $representante = Representante::create([
             'nombres'=>'Darling Rubén',
@@ -55,6 +44,13 @@ class UsersTableSeeder extends Seeder
             'estado'=>'A'
         ]);
 
+        DB::table('users')->insert([
+            'name'=>'Kelly Campoverde Montenegro',
+            'email'=>'kelly.campoverde@hotmail.com',
+            'password' => bcrypt('123'),
+            'tipo_entidad' => 'E',
+            'entidad_id' => 1
+        ]);
 
         $representante->representados()->attach($estudiante);
     }
