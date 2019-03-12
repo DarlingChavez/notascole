@@ -78,9 +78,10 @@
                     @endauth
                 </div>
             @endif
+            <div class='card-body'>
+                <p>{{ config('app.title', 'Notas del colegio') }}</p>
+            </div>
         </div>
-        <div class='card-body'>
-            <p>{{ config('app.title', 'Notas del colegio') }}</p>
-        </div>
+
     </body>
 </html>

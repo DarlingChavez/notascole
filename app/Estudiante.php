@@ -36,7 +36,7 @@ class Estudiante extends Model
     }
 
     public function fullname(){
-        return $this->nombres.' '.$this->apellidos;
+        return $this->nombres.' '.$this->apellidopaterno.' '.$this->apellidomaterno;
     }
 
 }

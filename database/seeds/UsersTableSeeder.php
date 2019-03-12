@@ -52,6 +52,13 @@ class UsersTableSeeder extends Seeder
             'entidad_id' => 1
         ]);
 
-        $representante->representados()->attach($estudiante);
+        $representante->estudiantes()->attach($estudiante);
+,
+        DB::table('users')->insert([
+            'name' => 'Tamara Cruz',
+            'email'=>'tamara.cruz@gmail.com',
+            'password'=>bcrypt('123')
+        ]);
+
     }
 }

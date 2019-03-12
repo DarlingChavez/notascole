@@ -25,7 +25,7 @@ class Representante extends Model
         'id', 'updatedbyuser',
     ];
 
-    public function representados()
+    public function estudiantes()
     {
         return $this->belongsToMany(Estudiante::class);
     }
@@ -35,7 +35,7 @@ class Representante extends Model
     }
 
     public function representadosCount(){
-        return $this->representados()
+        return $this->estudiantes()
                     ->selectRaw('estudiante_id, count(*) as contador')
                     ->groupBy('representante_id');
     }

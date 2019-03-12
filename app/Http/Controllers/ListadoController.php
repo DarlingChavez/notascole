@@ -49,12 +49,12 @@ class ListadoController extends Controller
                 $representante = Representante::find($idEntidad);
                 $count_estudiantes = $representante->representadosCount()->first()->contador;
                 if($count_estudiantes<>1){
-                    return view('consulta.estudiante')->with('estudiantes',$representante->representados)
+                    return view('consulta.estudiante')->with('estudiantes',$representante->estudiantes)
                                                       ->with('representante',$count_estudiantes);
                 }else{
-                    $estudiante = $representante->representados()->first();
+                    $estudiante = $representante->estudiantes()->first();
                     return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
-                                               ->with('estudiante',$count_estudiantes);
+                                               ->with('estudiante',$estudiante);
                 }
             }else{
                 $estudiante = Estudiante::find($idEntidad);
