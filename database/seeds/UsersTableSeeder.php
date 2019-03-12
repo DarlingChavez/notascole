@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $representante->estudiantes()->attach($estudiante);
-,
+
         DB::table('users')->insert([
             'name' => 'Tamara Cruz',
             'email'=>'tamara.cruz@gmail.com',
