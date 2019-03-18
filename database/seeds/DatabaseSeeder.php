@@ -25,9 +25,10 @@ class DatabaseSeeder extends Seeder
             'password_resets'
         ]);
 
-        $this->call(CursosTableSeeder::class);
-        $this->call(UsersTableSeeder::class);
         $this->call(AnhioLectivoSeeder::class);
+        $this->call(CursosTableSeeder::class);
+        $this->call(AsignaturasSeeder::class);
+        $this->call(UsersTableSeeder::class);
     }
 
     private function truncateTables(array $tables){

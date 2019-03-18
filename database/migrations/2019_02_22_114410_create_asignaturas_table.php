@@ -17,6 +17,8 @@ class CreateAsignaturasTable extends Migration
             $table->increments('id');
             $table->string('descripcion');
             $table->char('estado',1);
+            $table->timestamps();
+            $table->string('updatedbyuser')->nullable();
         });
     }
 

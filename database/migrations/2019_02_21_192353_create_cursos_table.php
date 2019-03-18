@@ -20,6 +20,8 @@ class CreateCursosTable extends Migration
             $table->string('nivel');
             $table->string('descripcion');
             $table->char('estado',1);
+            $table->timestamps();
+            $table->string('updatedbyuser')->nullable();
         });
     }
 
