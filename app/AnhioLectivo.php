@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class AnhioLectivo extends Model
 {
     protected $table = 'anhiolectivos';
+    protected $primaryKey = 'inicio';
 }

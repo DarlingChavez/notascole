@@ -50,19 +50,35 @@ class ListadoController extends Controller
                 $count_estudiantes = $representante->representadosCount()->first()->contador;
                 if($count_estudiantes<>1){
                     return view('consulta.estudiante')->with('estudiantes',$representante->estudiantes)
-                                                      ->with('representante',$count_estudiantes);
+                                                      ->with('representante',$representante)
+                                                      ->with('anhiolectivo',$anhiosLectivos[0]);
                 }else{
+                    /*
                     $estudiante = $representante->estudiantes()->first();
                     return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
                                                ->with('estudiante',$estudiante);
+                    */
+                    return redirect()->route('notas', ['estudianteId' => $representante->estudiantes()->first()->id,
+                                                        'inicioanhioLectivo' => $anhiosLectivos[0]->inicio]);
                 }
             }else{
+                /*
                 $estudiante = Estudiante::find($idEntidad);
                 return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
                                                ->with('estudiante',$estudiante);
+                */
+                return redirect()->route('notas', ['estudianteId' => $representante->estudiantes()->first()->id,
+                                                    'inicioanhioLectivo' => $anhiosLectivos[0]->inicio]);
             }
         }
     }
 
+    public function notas($estudianteId,$inicioanhioLectivo)
+    {
+        $estudiante = Estudiante::find($estudianteId);
+        $anhioLectivo = AnhioLectivo::find($inicioanhioLectivo);
+        return view('consulta.listado')->with('anhiolectivo',$anhioLectivo)
+                                       ->with('estudiante',$estudiante);
+    }
 
 }

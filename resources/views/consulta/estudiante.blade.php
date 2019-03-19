@@ -22,7 +22,7 @@
                             <ul>
                                 @foreach($estudiantes as $estudiante)
                                 <li>
-                                    <a href="{{ route('listado') }}">{{ $estudiante->fullname }}</a>
+                                    <a href="{{ route('notas',['estudianteId'=>$estudiante->id,'inicioanhioLectivo'=>$anhiolectivo->inicio]) }}">{{ $estudiante->fullname() }}</a>
                                 </li>
                                 @endforeach
                             </ul>
