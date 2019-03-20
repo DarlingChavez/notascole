@@ -15,11 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
+Auth::routes();
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+//Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+//Route::get('logout','\notascole\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 // Registration Routes...
 if ($options['register'] ?? true) {
@@ -46,4 +48,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // calificaciones
 Route::get('home','ListadoController@index')->name('home');
-Route::get('notas/{estudiante}/{anhioLectivo}','ListadoController@notas')->name('notas');
+Route::get('notas/{anhioLectivo}/{estudiante}','ListadoController@notas')->name('notas');

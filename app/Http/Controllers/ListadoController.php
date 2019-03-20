@@ -59,8 +59,8 @@ class ListadoController extends Controller
                     return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
                                                ->with('estudiante',$estudiante);
                     */
-                    return redirect()->route('notas', ['estudianteId' => $representante->estudiantes()->first()->id,
-                                                        'inicioanhioLectivo' => $anhiosLectivos[0]->inicio]);
+                    return redirect()->route('notas', ['inicioanhioLectivo' => $anhiosLectivos[0]->inicio,
+                                                       'estudianteId' => $representante->estudiantes()->first()->id]);
                 }
             }else{
                 /*
@@ -68,16 +68,41 @@ class ListadoController extends Controller
                 return view('consulta.listado')->with('anhiolectivo',$anhiosLectivos[0])
                                                ->with('estudiante',$estudiante);
                 */
-                return redirect()->route('notas', ['estudianteId' => $representante->estudiantes()->first()->id,
-                                                    'inicioanhioLectivo' => $anhiosLectivos[0]->inicio]);
+                return redirect()->route('notas', ['inicioanhioLectivo' => $anhiosLectivos[0]->inicio,
+                                                   'estudianteId' => $representante->estudiantes()->first()->id]);
             }
         }
     }
 
-    public function notas($estudianteId,$inicioanhioLectivo)
+    public function notas($inicioanhioLectivo,$estudianteId)
     {
         $estudiante = Estudiante::find($estudianteId);
         $anhioLectivo = AnhioLectivo::find($inicioanhioLectivo);
+
+        if($anhioLectivo === null){
+            return abort(404);
+        }else{
+            if(!($anhioLectivo->enabled === '*')){
+                return abort(404);
+            }
+        }
+
+        if($estudiante === null){
+            return abort(404);
+        }else{
+            if(Auth::user()->tipo_entidad === 'E'){
+                if(!(Auth::user()->id === $estudiante->id)){
+                    return abort(404);
+                }
+            }else if(Auth::user()->tipo_entidad === 'R'){
+                $representante = Representante::find(Auth::user()->entidad_id);
+                $exists = $representante->estudiantes->contains($estudianteId);
+                if(!($exists === true)){
+                    return abort(404);
+                }
+            }
+        }
+
         $notas = Calificacion::where([
             ['estudiante_id', '=', $estudiante->id],
             ['curso_id', '=', $estudiante->curso_id],
@@ -86,5 +111,6 @@ class ListadoController extends Controller
                                        ->with('estudiante',$estudiante)
                                        ->with('notas',$notas);
     }
+
 
 }
