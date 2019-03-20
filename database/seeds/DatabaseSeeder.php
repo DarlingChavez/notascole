@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'estudiante_representante',
             'estudiantes',
             'representantes',
-            'profesors',
+            'profesores',
             'password_resets'
         ]);
 
@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CursosTableSeeder::class);
         $this->call(AsignaturasSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(CalificacionesSeeder::class);
     }
 
     private function truncateTables(array $tables){

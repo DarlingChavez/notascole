@@ -22,10 +22,11 @@ class Asignatura extends Model
      *
      * @var array
      */
+    /*
     protected $hidden = [
         'id', 'estado'
     ];
-
+    */
 
     public function cursos()
     {

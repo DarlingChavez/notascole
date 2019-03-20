@@ -13,7 +13,7 @@ class CreateProfesorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('profesors', function (Blueprint $table) {
+        Schema::create('profesores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cedula')->unique();
             $table->string('nombre');
@@ -33,6 +33,6 @@ class CreateProfesorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profesors');
+        Schema::dropIfExists('profesores');
     }
 }

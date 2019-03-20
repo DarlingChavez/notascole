@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use notascole\AnhioLectivo;
 use notascole\Representante;
 use notascole\Estudiante;
+use notascole\Calificacion;
 use Illuminate\Support\Facades\Auth;
 
 class ListadoController extends Controller
@@ -77,8 +78,13 @@ class ListadoController extends Controller
     {
         $estudiante = Estudiante::find($estudianteId);
         $anhioLectivo = AnhioLectivo::find($inicioanhioLectivo);
+        $notas = Calificacion::where([
+            ['estudiante_id', '=', $estudiante->id],
+            ['curso_id', '=', $estudiante->curso_id],
+                                    ])->get();
         return view('consulta.listado')->with('anhiolectivo',$anhioLectivo)
-                                       ->with('estudiante',$estudiante);
+                                       ->with('estudiante',$estudiante)
+                                       ->with('notas',$notas);
     }
 
 }
