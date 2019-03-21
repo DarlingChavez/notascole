@@ -14,16 +14,18 @@
                         Notas del estudiante: {{ $estudiante->fullname() }}
                     </div>
                     <div class="card-body">
-                        <table>
-                            <thead>
+                        <table class="table">
+                            <thead class="thead-dark">
                                 <th>{{ 'Materia' }}</th>
                                 <th>{{ 'Calificación' }}</th>
                             </thead>
                             <tbody>
                                 @foreach($notas as $nota)
                                     <tr>
+
                                         <td>{{ $nota->asignatura->descripcion }}</td>
                                         <td>{{ $nota->nota }}</td>
+
                                     </tr>
                                 @endforeach
                             </tbody>
