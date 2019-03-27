@@ -22,9 +22,11 @@ class DatabaseSeeder extends Seeder
             'estudiantes',
             'representantes',
             'profesores',
-            'password_resets'
+            'password_resets',
+            'colegios'
         ]);
 
+        $this->call(ColegioTableSeeder::class);
         $this->call(AnhioLectivoSeeder::class);
         $this->call(CursosTableSeeder::class);
         $this->call(AsignaturasSeeder::class);

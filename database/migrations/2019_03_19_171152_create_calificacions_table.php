@@ -23,7 +23,13 @@ class CreateCalificacionsTable extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes');
             $table->integer('asignatura_id')->unsigned();
             $table->foreign('asignatura_id')->references('id')->on('asignaturas');
-            $table->decimal('nota',4,2);
+            $table->decimal('nota1',4,2);
+            $table->decimal('nota2',4,2);
+            $table->decimal('nota3',4,2);
+            $table->decimal('nota4',4,2);
+            $table->decimal('promedio',4,2);
+            $table->decimal('suspenso',4,2);
+            $table->decimal('final',4,2);
             $table->char('estado',1);
             $table->timestamps();
             $table->string('updatedbyuser')->nullable();

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use notascole\Curso;
+use notascole\Colegio;
 
 class CursosTableSeeder extends Seeder
 {
@@ -18,8 +19,11 @@ class CursosTableSeeder extends Seeder
             'paralelo'=>'B',
             'nivel'=>'Basico',
             'descripcion'=>'Primero de Básico - paralelo B',
-            'estado'=>'A'
+            'estado'=>'A',
+            'colegio_id' => 1
         ]);
+
+
 
     }
 }

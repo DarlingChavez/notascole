@@ -27,7 +27,7 @@ class CalificacionesSeeder extends Seeder
                 'curso_id' => $uno,
                 'estudiante_id' => $uno,
                 'asignatura_id' => $asignatura->id,
-                'nota' => 7.5,
+                'nota1' => 7.5,
                 'estado' => 'A',
                 'updatedbyuser' => 'seed'
             ]);
@@ -36,7 +36,7 @@ class CalificacionesSeeder extends Seeder
                 'curso_id' => $uno,
                 'estudiante_id' => $dos,
                 'asignatura_id' => $asignatura->id,
-                'nota' => 7.5,
+                'nota1' => 7.5,
                 'estado' => 'A',
                 'updatedbyuser' => 'seed'
             ]);
@@ -45,7 +45,7 @@ class CalificacionesSeeder extends Seeder
                 'curso_id' => $uno,
                 'estudiante_id' => $tres,
                 'asignatura_id' => $asignatura->id,
-                'nota' => 7.5,
+                'nota1' => 7.5,
                 'estado' => 'A',
                 'updatedbyuser' => 'seed'
             ]);
